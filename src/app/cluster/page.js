@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
 const ClusterPage = () => {
   const searchParams = useSearchParams()
@@ -25,6 +26,7 @@ const ClusterPage = () => {
 
 
   return (
+    <Suspense>
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px', margin: '20px' }}>
       {files.map((fileName, index) => (
         <div key={index} style={{ textAlign: 'center' }}>
@@ -37,8 +39,10 @@ const ClusterPage = () => {
             />
           </a>
         </div>
+      
       ))}
     </div>
+    </Suspense>
   );
 };
 
