@@ -6,10 +6,10 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
 
-const ClusterPage = () => {
+
+function GetData(){
   const searchParams = useSearchParams()
- 
-  const clusterId = searchParams.get('clusterId') // Extract clusterId from the URL query string
+  const clusterId = searchParams.get('clusterId')
   const [files, setFiles] = useState([]);
 
   useEffect(() => {
@@ -25,9 +25,7 @@ const ClusterPage = () => {
   }, [clusterId]);
 
 
-  return (
-    <Suspense>
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px', margin: '20px' }}>
+  return <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px', margin: '20px' }}>
       {files.map((fileName, index) => (
         <div key={index} style={{ textAlign: 'center' }}>
           {/* Wrap the img tag in an anchor tag pointing to the original image URL */}
@@ -42,6 +40,16 @@ const ClusterPage = () => {
       
       ))}
     </div>
+}
+const ClusterPage = () => {
+  
+ 
+  
+
+
+  return (
+    <Suspense>
+      <GetData></GetData>
     </Suspense>
   );
 };
