@@ -43,7 +43,7 @@ function ImageGrid() {
               {/* Linking each image to its cluster details page */}
               <Link href={`/cluster?clusterId=${cluster}`} legacyBehavior>
                 <a>
-                  <img
+                  <Image
                     src={`https://faceapp.dbackup.cloud/image/${fileName}`}
                     alt={`Face Cluster ${cluster}`}
                     style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
