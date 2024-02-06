@@ -6,9 +6,16 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
 
+
+const imageLoader = ({ src }) => {
+  return `https://faceapp.dbackup.cloud/image/${src}`;
+}
+
+
 function ImageGrid() {
   const [images, setImages] = useState([]);
-
+  
+  
   useEffect(() => {
     // Fetching image data from your FastAPI backend
     fetch('https://faceapp.dbackup.cloud')
@@ -44,10 +51,12 @@ function ImageGrid() {
               {/* Linking each image to its cluster details page */}
               <Link href={`/cluster?clusterId=${cluster}`} legacyBehavior>
                 <a>
-                  <Image
-                    src={`https://faceapp.dbackup.cloud/image/${fileName}`}
+                <Image
+                    loader={imageLoader}
+                    src={`${fileName}`}
                     alt={`Face Cluster ${cluster}`}
-                    style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
+                    width={300}
+                    height={300}
                   />
                 </a>
               </Link>

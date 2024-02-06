@@ -7,8 +7,14 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
 
+const imageLoader = ({ src }) => {
+  return `https://faceapp.dbackup.cloud/image/${src}`;
+}
 
 function GetData(){
+
+  
+
   const searchParams = useSearchParams()
   const clusterId = searchParams.get('clusterId')
   const [files, setFiles] = useState([]);
@@ -31,11 +37,13 @@ function GetData(){
         <div key={index} style={{ textAlign: 'center' }}>
           {/* Wrap the Image tag in an anchor tag pointing to the original image URL */}
           <a href={`https://faceapp.dbackup.cloud/oimage/${fileName}`} target="_blank" rel="noopener noreferrer">
-            <Image
-              src={`https://faceapp.dbackup.cloud/image/${fileName}`}
-              alt={`Cluster Image`}
-              style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
-            />
+          <Image
+                    loader={imageLoader}
+                    src={`${fileName}`}
+                    alt={`Face Cluster ${fileName}`}
+                    width={300}
+                    height={300}
+          />
           </a>
         </div>
       
