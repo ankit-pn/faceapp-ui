@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
+import { split } from 'postcss/lib/list';
 
 
 const imageLoader = ({ src }) => {
@@ -29,7 +30,8 @@ function ImageGrid() {
         // Assuming the API returns a JSON object where keys are cluster identifiers
         // and values are filenames, as described.
         const imageEntries = Object.entries(data).map(([key, value]) => ({
-          cluster: key.split(':')[1], // Extracting cluster number from key
+          cluster: key.split(':')[1],
+          count: key.split(':')[2], // Extracting cluster number from key
           fileName: value,
         }));
         setImages(imageEntries);
@@ -46,7 +48,7 @@ function ImageGrid() {
       <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
         <h1>Image Clusters</h1>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px', marginTop: '20px' }}>
-          {images.map(({ cluster, fileName }, index) => (
+          {images.map(({ cluster,count, fileName }, index) => (
             <div key={index} style={{ textAlign: 'center' }}>
               {/* Linking each image to its cluster details page */}
               <Link href={`/cluster?clusterId=${cluster}`} legacyBehavior>
@@ -54,13 +56,13 @@ function ImageGrid() {
                 <Image
                     loader={imageLoader}
                     src={`${fileName}`}
-                    alt={`Face Cluster ${cluster}`}
+                    alt={`Face cluster: ${cluster}`}
                     width={300}
                     height={300}
                   />
                 </a>
               </Link>
-              <p>Face Cluster: {cluster}</p>
+              <p>c_id: {cluster} count:{count}</p>
             </div>
           ))}
         </div>
