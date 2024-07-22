@@ -45,6 +45,27 @@ export default function Home() {
               <p>Find similar image clusters based on your input</p>
             </a>
           </Link>
+
+          <Link href="/video-search" legacyBehavior>
+            <a className="block p-6 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition-colors duration-300">
+              <h3 className="text-xl font-semibold mb-2">Video Search</h3>
+              <p>Search faces in video collection</p>
+            </a>
+          </Link>
+
+          <Link href="/video-grid" legacyBehavior>
+            <a className="block p-6 bg-yellow-500 text-white rounded-lg shadow-md hover:bg-yellow-600 transition-colors duration-300">
+              <h3 className="text-xl font-semibold mb-2">Video Cluster Viewer</h3>
+              <p>View video clusters</p>
+            </a>
+          </Link>
+
+          <Link href="/video-cluster-search" legacyBehavior>
+            <a className="block p-6 bg-indigo-500 text-white rounded-lg shadow-md hover:bg-indigo-600 transition-colors duration-300">
+              <h3 className="text-xl font-semibold mb-2">Video Cluster Search</h3>
+              <p>Search on video clusters</p>
+            </a>
+          </Link>
         </div>
       </main>
 
