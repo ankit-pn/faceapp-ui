@@ -2,6 +2,7 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -27,6 +28,7 @@ function FrameViewer() {
   }
 
   return (
+    <Suspense>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <header className="bg-white shadow-md">
         <div className="container mx-auto px-4 py-4 sm:py-6">
@@ -84,6 +86,7 @@ function FrameViewer() {
         </div>
       </main>
     </div>
+    </Suspense>
   );
 }
 
